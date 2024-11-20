@@ -15,6 +15,15 @@ class WorkoutPlan(db.Model):
         ondelete='CASCADE'),
         nullable=False
     )
+    created_at = db.Column(
+        db.DateTime,
+        default=db.func.current_timestamp()
+    )
+    updated_at = db.Column(
+        db.DateTime,
+        default=db.func.current_timestamp(),
+        onupdate=db.func.current_timestamp()
+    )
 
     user = db.relationship('User', back_populates='workout_plans')
 
@@ -23,5 +32,7 @@ class WorkoutPlan(db.Model):
             'id': self.id,
             'category': self.category,
             'content': self.content,
-            'user_id': self.user_id
+            'user_id': self.user_id,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
         }
