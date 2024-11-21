@@ -5,12 +5,17 @@ import "./Navigation.css";
 function Navigation() {
   return (
     <ul>
-      <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
-
-      <li>
+      <li className="profile-button-nav">
         <ProfileButton />
+        <NavLink
+        className="site-name"
+        style={{
+          textDecoration: 'none',
+          fontSize: '2rem',
+          fontWeight: '900',
+          color: 'black'
+        }}
+        to="/">OnTrack</NavLink>
       </li>
     </ul>
   );
