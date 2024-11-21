@@ -7,7 +7,8 @@ workout_plan_routes = Blueprint('workout_plan', __name__)
 @workout_plan_routes.route('/', methods=['GET'])
 def get_plans():
     plans = WorkoutPlan.query.all()
-    return jsonify([workout_plan.to_dict() for workout_plan in plans])
+    
+    return jsonify([workout_plan.to_dict() for workout_plan in plans]), 200
 
 @workout_plan_routes.route('/user/<int:user_id>', methods=['GET'])
 def get_user_plans(user_id):
@@ -21,6 +22,7 @@ def get_user_plans(user_id):
 @workout_plan_routes.route('/<int:id>', methods=['GET'])
 def get_plan_by_id(id):
     plan = WorkoutPlan.query.get_or_404(id)
+
     return jsonify([plan.to_dict()])
 
 @workout_plan_routes.route('/user', methods=['GET'])
@@ -78,4 +80,4 @@ def delete_plan(id):
     db.session.delete(plan)
     db.session.commit()
 
-    return jsonify({'message': 'Successfully deleted'})
+    return jsonify({'message': 'Successfully deleted'}), 200
