@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FaUserCircle } from 'react-icons/fa';
+import { BsPersonFill } from 'react-icons/bs';
 import { thunkLogout } from "../../store/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
@@ -52,7 +52,7 @@ function ProfileButton() {
       onClick={toggleMenu}
       aria-expanded={showMenu}
       aria-label="User menu">
-        <FaUserCircle size={24}/>
+        <BsPersonFill size={35}/>
       </button>
       {showMenu && (
         <ul className="profile-dropdown" ref={menuRef}>

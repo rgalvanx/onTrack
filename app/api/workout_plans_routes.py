@@ -7,8 +7,8 @@ workout_plan_routes = Blueprint('workout_plan', __name__)
 @workout_plan_routes.route('/', methods=['GET'])
 def get_plans():
     plans = WorkoutPlan.query.all()
-    
-    return jsonify([workout_plan.to_dict() for workout_plan in plans]), 200
+
+    return jsonify([plan.to_dict() for plan in plans]), 200
 
 @workout_plan_routes.route('/user/<int:user_id>', methods=['GET'])
 def get_user_plans(user_id):

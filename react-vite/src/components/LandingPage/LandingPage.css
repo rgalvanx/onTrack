@@ -1,0 +1,9 @@
+.workout-box {
+    border: 2px black solid;
+}
+.workout-list {
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
