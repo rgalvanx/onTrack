@@ -1,4 +1,4 @@
-from app.models import db, WorkoutPlan, environment, SCHEMA
+from app.models.workout_planners import db, WorkoutPlan, environment, SCHEMA
 from sqlalchemy.sql import text
 
 def seed_workout_plans():
