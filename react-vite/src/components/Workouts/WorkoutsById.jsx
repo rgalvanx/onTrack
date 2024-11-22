@@ -17,6 +17,10 @@ export default function WorkoutsById() {
         dispatch(loadPlansThunk(workoutId))
     }, [dispatch])
 
+    if(!workouts) return (
+        <h1>No Projects Found!</h1>
+    )
+
     return (
         <>
             <div className="workout-header">
@@ -28,6 +32,7 @@ export default function WorkoutsById() {
                     <h3 className="workout-content">{workouts?.content}</h3>
                 </div>
             </div>
+            {}
         </>
     )
 }
