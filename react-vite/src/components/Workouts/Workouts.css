@@ -33,3 +33,37 @@
     display: block;
     border-radius: 3%;
 }
+.delete-workout-modal {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    border-radius: 100px;
+    height: 400px;
+}
+.delete-title {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    justify-self: center;
+    flex: 1;
+}
+.options {
+    flex: 1;
+    display: flex;
+    height: 100px;
+    align-items: center;
+    justify-items: center;
+    justify-content: space-around;
+}
+.delete {
+    background-color: red;
+    &:hover {
+        background-color: darkred;
+    }
+}
+.keep {
+    background-color: blue;
+    &:hover {
+        background-color: darkblue;
+    }
+}
