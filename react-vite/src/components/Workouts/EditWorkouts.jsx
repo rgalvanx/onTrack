@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { loadPlansThunk, updatePlanThunk } from "../../store/workoutPlan";
+import { updatePlanThunk } from "../../store/workoutPlan";
 
 const EditWorkout = () => {
     const { workoutId } = useParams()
