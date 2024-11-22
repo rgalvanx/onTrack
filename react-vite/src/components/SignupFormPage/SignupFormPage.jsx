@@ -44,7 +44,7 @@ function SignupFormPage() {
     <>
       <h1>Sign Up</h1>
       {errors.server && <p>{errors.server}</p>}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="signup-form">
         <label>
           Email
           <input

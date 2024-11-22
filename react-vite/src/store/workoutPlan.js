@@ -49,15 +49,21 @@ export const loadPlansThunk = () => async ( dispatch ) => {
 }
 
 export const addPlanThunk = ( payload ) => async ( dispatch ) => {
-    const res = await csrfFetch('/api/workout_plans', {
+    const res = await csrfFetch('/api/workout_plans/', {
         method: 'POST',
-        body: JSON.stringify( payload )
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify( payload ),
     })
 
-    if(res) {
+    if(res.ok) {
         const newPlan = await res.json()
         dispatch(addPlan(newPlan))
         return newPlan
+    } else {
+        const error = await res.json()
+        console.error('failed to add plan', error)
     }
 }
 

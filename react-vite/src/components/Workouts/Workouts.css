@@ -26,3 +26,10 @@
 .content {
     margin: 20px;
 }
+.content-text {
+    width: 400px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    display: block;
+    border-radius: 3%;
+}
