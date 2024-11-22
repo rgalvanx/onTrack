@@ -3,8 +3,7 @@ import LoginFormPage from '../components/LoginFormPage';
 import SignupFormPage from '../components/SignupFormPage';
 import Layout from './Layout';
 import LandingPage from '../components/LandingPage';
-import WorkoutsById from '../components/Workouts/WorkoutsById';
-import AddWorkout from '../components/Workouts/CreateWorkout';
+import { CreateWorkout, EditWorkout, WorkoutsById } from '../components/Workouts';
 
 export const router = createBrowserRouter([
   {
@@ -29,7 +28,11 @@ export const router = createBrowserRouter([
       },
       {
         path: 'workout_plans/create',
-        element: <AddWorkout />
+        element: <CreateWorkout />
+      },
+      {
+        path: 'workout_plans/:workoutId/edit',
+        element: <EditWorkout />
       }
     ],
   },

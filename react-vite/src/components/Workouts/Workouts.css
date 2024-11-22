@@ -67,3 +67,10 @@
         background-color: darkblue;
     }
 }
+.user-options {
+    display: flex;
+    width: 25%;
+    justify-content: space-around;
+    align-items: center;
+    height: 70px;
+}

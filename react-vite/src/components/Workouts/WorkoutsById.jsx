@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { loadPlansThunk } from "../../store/workoutPlan";
-import { deletePlanThunk } from "../../store/workoutPlan";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import OpenModalButton from "../Navigation/OpenModalButton";
@@ -20,11 +19,6 @@ export default function WorkoutsById() {
         dispatch(loadPlansThunk(workoutId))
     }, [dispatch])
 
-    const handleDelete = () => {
-        dispatch(deletePlanThunk(workoutId))
-        navigate('/')
-    }
-
     if(!workouts) return (
         <h1>No Projects Found!</h1>
     )
@@ -37,12 +31,13 @@ export default function WorkoutsById() {
             </div>
             <div className="content" style={{paddingBottom: '40px'}}>
                 <div className="workout-container">
-                    <h3 className="workout-content">{workouts?.content}</h3>
+                    <h3 style={{paddingLeft: '50px', lineHeight: '50px'}}className="workout-content">{workouts?.content}</h3>
                 </div>
             </div>
                 {correctUser && (
-                    <div>
+                    <div className="user-options">
                         <OpenModalButton className="delete-button" itemText='Delete Workout' modalComponent={<DeleteWorkout workout={workouts}/>}>Delete Workout</OpenModalButton>
+                        <button onClick={() => navigate(`/workout_plans/${workoutId}/edit`)}className="update-button">Update Your Plan</button>
                     </div>
                 )}
         </>

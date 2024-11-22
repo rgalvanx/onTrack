@@ -10,7 +10,7 @@ const DeleteWorkout = ({ workout }) => {
     const navigate = useNavigate()
 
     const deletePlan = () => {
-        dispatch(deletePlanThunk( workoutId, ))
+        dispatch(deletePlanThunk( workoutId ))
         closeModal()
         navigate('/')
     }
