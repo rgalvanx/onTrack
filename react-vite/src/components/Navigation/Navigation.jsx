@@ -4,7 +4,7 @@ import "./Navigation.css";
 
 function Navigation() {
   return (
-    <ul>
+    <ul className="nav-bar" style={{backgroundColor: 'darkgoldenrod', margin: '0', padding: '20px, 0px'}}>
       <li className="profile-button-nav">
         <ProfileButton />
         <NavLink
