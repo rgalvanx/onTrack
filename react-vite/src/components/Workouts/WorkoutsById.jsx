@@ -12,7 +12,7 @@ export default function WorkoutsById() {
     const navigate = useNavigate()
     const workouts = useSelector((state) => state.workouts[workoutId])
     const user = useSelector((state) => state.session.user)
-    const correctUser = user.id === workouts?.user_id
+    const correctUser = user?.id === workouts?.user_id
     console.log(correctUser)
 
     useEffect(() => {
