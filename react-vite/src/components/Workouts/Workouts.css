@@ -1,0 +1,28 @@
+.workout-header {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    & > * {
+        height: 20px;
+    }
+}
+
+.header-name {
+    margin-left: 40px;
+}
+
+.workout-container {
+    white-space: pre-wrap;
+    background-color: darkgoldenrod;
+    color: white;
+    display: flex;
+    justify-self: center;
+    width: 85%;
+    height: fit-content;
+    border: 2px black solid;
+    border-radius: 10px;
+    line-height: 1.8em;
+}
+.content {
+    margin: 20px;
+}

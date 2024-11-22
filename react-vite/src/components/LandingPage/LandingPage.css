@@ -2,10 +2,13 @@ button {
     width: 150px;
     height: 50px;
     background-color:darkgoldenrod;
+    color: white;
+    font-size: large;
     &:hover {
         cursor: pointer;
     }
 }
+
 
 .workout-box {
     background-color: darkgoldenrod;

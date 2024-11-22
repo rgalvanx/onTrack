@@ -20,6 +20,7 @@ export default function LandingPage() {
         className="landing-page"
         style={{marginTop: '50px'}}>
             <button
+            className="create-button"
             style={{marginLeft: '50px'}}
             onClick={(e) => {
                 e.preventDefault()

@@ -3,9 +3,11 @@ import LoginFormPage from '../components/LoginFormPage';
 import SignupFormPage from '../components/SignupFormPage';
 import Layout from './Layout';
 import LandingPage from '../components/LandingPage';
+import WorkoutsById from '../components/Workouts/WorkoutsById';
 
 export const router = createBrowserRouter([
   {
+    path: '/',
     element: <Layout />,
     children: [
       {
@@ -20,6 +22,10 @@ export const router = createBrowserRouter([
         path: "signup",
         element: <SignupFormPage />,
       },
+      {
+        path: 'workout_plans/:workoutId',
+        element: <WorkoutsById />
+      }
     ],
   },
 ]);

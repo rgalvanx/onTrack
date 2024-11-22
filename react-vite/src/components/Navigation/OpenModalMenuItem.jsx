@@ -15,7 +15,7 @@ function OpenModalMenuItem({
   };
 
   return (
-    <li className="profile-button" onClick={onClick}>{itemText}</li>
+    <button className="profile-button" onClick={onClick}>{itemText}</button>
   );
 }
 
