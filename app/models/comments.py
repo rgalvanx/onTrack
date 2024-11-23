@@ -30,7 +30,7 @@ class Comment(db.Model):
         onupdate = db.func.current_timestamp()
     )
 
-    users = db.relationship('User', back_populates='comments')
+    user = db.relationship('User', back_populates='comments')
     workout_plans = db.relationship('WorkoutPlan', back_populates='comments')
 
     def to_dict(self):
