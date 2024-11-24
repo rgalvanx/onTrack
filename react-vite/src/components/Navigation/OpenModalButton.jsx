@@ -1,6 +1,6 @@
 import { useModal } from '../../context/Modal';
 
-function OpenModalMenuItem({
+function OpenModalButton({
   modalComponent, // component to render inside the modal
   itemText, // text of the button that opens the modal
   onItemClick, // optional: callback function that will be called once the button that opens the modal is clicked
@@ -20,4 +20,4 @@ function OpenModalMenuItem({
   );
 }
 
-export default OpenModalMenuItem;
+export default OpenModalButton;

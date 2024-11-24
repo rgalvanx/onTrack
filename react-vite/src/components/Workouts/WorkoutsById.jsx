@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import OpenModalButton from "../Navigation/OpenModalButton";
 import DeleteWorkout from "./DeleteWorkout";
 import './Workouts.css'
+import Comments from "../Comments/Comments";
 
 export default function WorkoutsById() {
     const { workoutId } = useParams()
@@ -40,6 +41,7 @@ export default function WorkoutsById() {
                         <button onClick={() => navigate(`/workout_plans/${workoutId}/edit`)}className="update-button">Update Your Plan</button>
                     </div>
                 )}
+                <Comments workoutId={workoutId}/>
         </>
     )
 }
