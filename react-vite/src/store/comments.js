@@ -52,7 +52,7 @@ export const addCommentThunk = ( comment, workoutId ) => async ( dispatch ) => {
 }
 
 export const updateCommentThunk = ( comment, commentId )  => async ( dispatch ) => {
-    const res = await csrfFetch(`/api/comments'${commentId}`, {
+    const res = await csrfFetch(`/api/comments/${commentId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'

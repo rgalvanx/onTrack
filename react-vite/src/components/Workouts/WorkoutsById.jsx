@@ -17,9 +17,9 @@ export default function WorkoutsById() {
     const user = useSelector((state) => state.session.user)
     const correctUser = user?.id === workouts?.user_id
     const notOwner = user?.id !== workouts?.user_id
-    const comments = useSelector((state) => (state.comments[workoutId]))
-    const userCommented = comments?.user_id === user.id
-    console.log(userCommented)
+    const comments = useSelector((state) =>
+        Object.values(state.comments).filter((comment) => comment.workout_plan_id == Number(workoutId)))
+    const userCommented = comments?.user_id === user?.id
 
     useEffect(() => {
         dispatch(loadPlansThunk(workoutId))
@@ -48,7 +48,7 @@ export default function WorkoutsById() {
                         <button onClick={() => navigate(`/workout_plans/${workoutId}/edit`)}className="update-button">Update Your Plan</button>
                     </div>
                 )}
-                {notOwner && !userCommented && (
+                {notOwner && userCommented && user &&(
                     <div>
                         <OpenModalButton className="add-comment" itemText='Add Your Comment!'modalComponent={<CreateCommentModal navigate={navigate} workoutId={workoutId}/>}></OpenModalButton>
                     </div>
