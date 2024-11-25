@@ -6,7 +6,7 @@ import { loadCommentsThunk, updateCommentThunk } from "../../store/comments";
 const EditCommentModal = ({ workoutId, yourComment }) => {
     const dispatch = useDispatch()
     const { closeModal } = useModal()
-    const [ content, setContent ] = useState(yourComment?.content || '')
+    const [ content, setContent ] = useState(yourComment?.content)
     const [ errors, setErrors ] = useState({})
     const [ submitted, setSubmitted ] = useState(false)
 
@@ -23,7 +23,7 @@ const EditCommentModal = ({ workoutId, yourComment }) => {
         setSubmitted(true)
         if(Object.values(errors).length) return errors
         const comment = { content }
-        await dispatch(updateCommentThunk( comment, workoutId ))
+        await dispatch(updateCommentThunk( comment, yourComment.id ))
         dispatch(loadCommentsThunk(workoutId))
         closeModal()
     }

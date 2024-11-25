@@ -56,7 +56,7 @@ def update_plan(id):
     if not plan:
         return jsonify({'error': 'Workout Plan not found'}), 404
     if plan.user_id != current_user.id:
-        return jsonify({'error': 'Unauthorized'}), 403
+        return jsonify({'error': 'ThisUnauthorized'}), 403
 
     data = request.get_json()
 
@@ -75,7 +75,7 @@ def delete_plan(id):
     if not plan:
         return jsonify({'error': 'Workout Plan not found'}), 404
     if plan.user_id != current_user.id:
-        return jsonify({'error': 'Unauthorized'}), 403
+        return jsonify({'error': 'ThatUnauthorized'}), 403
 
     db.session.delete(plan)
     db.session.commit()

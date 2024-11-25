@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { addCommentThunk, loadCommentsThunk } from "../../store/comments";
 
-const CreateCommentModal = ({ workoutId, navigate }) => {
+const CreateCommentModal = ({ workoutId }) => {
     const dispatch = useDispatch()
-    const user = useSelector((state) => state.session.user)
     const { closeModal } = useModal()
     const [ content, setContent ] = useState('')
     const [ errors, setErrors ] = useState({})

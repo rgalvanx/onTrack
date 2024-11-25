@@ -51,7 +51,8 @@ def update_comment(comment_id):
         return jsonify({'error': 'Comment not found'}), 404
 
     if comment.user_id != current_user.id:
-        return jsonify({'error': 'Unauthorized'}), 403
+        print(comment.user_id)
+        return jsonify({'error': 'This is Unauthorized' }), 403
 
     comment.content = content
     db.session.commit()

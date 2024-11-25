@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { loadCommentsThunk } from "../../store/comments";
 import OpenModalButton from "../Navigation/OpenModalButton";
@@ -11,10 +11,8 @@ const Comments = ({ workoutId }) => {
     const comments = useSelector((state) =>
         Object.values(state.comments).filter((comment) => comment.workout_plan_id == Number(workoutId)))
     const currentUser = useSelector((state) => state.session.user)
-    const workout = useSelector((state) => state.workouts[workoutId])
     const yourComment = useSelector((state) =>
         Object.values(state.comments).find((comment) => (comment?.user_id === currentUser?.id) && (comment?.workout_plan_id == Number(workoutId))))
-    const commentOwner = comments?.user_id === currentUser?.id
 
     useEffect(() => {
         dispatch(loadCommentsThunk(workoutId))
