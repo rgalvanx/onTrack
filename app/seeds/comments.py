@@ -4,16 +4,6 @@ from sqlalchemy.sql import text
 def seed_comments():
     comments = [
         {
-            'content': 'awesome work!',
-            'user_id': 1,
-            'workout_plan_id': 1
-        },
-        {
-            'content': 'This is so helpful!',
-            'user_id': 2,
-            'workout_plan_id': 1
-        },
-        {
             'content': 'Great advice!',
             'user_id': 3,
             'workout_plan_id': 2
@@ -26,11 +16,6 @@ def seed_comments():
         {
             'content': 'Perfect for my goals.',
             'user_id': 2,
-            'workout_plan_id': 3
-        },
-        {
-            'content': 'Really enjoyed this!',
-            'user_id': 3,
             'workout_plan_id': 3
         },
         {
@@ -49,20 +34,10 @@ def seed_comments():
             'workout_plan_id': 5
         },
         {
-            'content': 'Exactly what I needed.',
-            'user_id': 1,
-            'workout_plan_id': 5
-        },
-        {
             'content': 'Fantastic plan!',
             'user_id': 2,
             'workout_plan_id': 1
         },
-        {
-            'content': 'Keeps me on track.',
-            'user_id': 3,
-            'workout_plan_id': 2
-        }
     ]
 
     for comment in comments:

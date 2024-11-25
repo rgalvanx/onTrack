@@ -36,10 +36,10 @@ export const loadCommentsThunk = () => async ( dispatch ) => {
 }
 
 export const addCommentThunk = ( comment, workoutId ) => async ( dispatch ) => {
-    const res = await csrfFetch(`/api/rewards/${workoutId}`, {
+    const res = await csrfFetch(`/api/comments/${workoutId}`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify( comment )
     })

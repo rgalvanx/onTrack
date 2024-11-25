@@ -10,6 +10,9 @@
 .header-name {
     margin-left: 40px;
 }
+.workout-content {
+    margin: 0;
+}
 
 .workout-container {
     white-space: pre-wrap;
@@ -22,6 +25,8 @@
     border: 2px black solid;
     border-radius: 10px;
     line-height: 1.8em;
+    width: fit-content;
+    padding: 60px 100px;
 }
 .content {
     margin: 20px;
@@ -73,4 +78,13 @@
     justify-content: space-around;
     align-items: center;
     height: 70px;
+}
+.comments-section {
+    padding: 20px 20px;
+}
+.all-comments {
+    padding: 20px 40px;
+}
+.comment {
+    margin-top: 50px;
 }
