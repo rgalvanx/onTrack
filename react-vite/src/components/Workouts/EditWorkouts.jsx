@@ -12,7 +12,6 @@ const EditWorkout = () => {
     const navigate = useNavigate()
     const workout = useSelector((state) => state.workouts[workoutId])
     const dispatch = useDispatch()
-    console.log(workout)
 
     useEffect(() => {
         const errors = {}

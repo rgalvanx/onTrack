@@ -8,8 +8,6 @@ export default function LandingPage() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const plans = useSelector((state) => Object.values(state.workouts))
-    console.log(plans)
-
 
     useEffect(() => {
         dispatch(loadPlansThunk())

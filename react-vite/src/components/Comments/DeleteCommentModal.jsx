@@ -6,7 +6,6 @@ import './Comments.css'
 const DeleteCommentModal = ({ yourComment }) => {
     const dispatch = useDispatch()
     const { closeModal } = useModal()
-    console.log(yourComment.id)
 
     const deleteComment = () => {
         dispatch(deleteCommentThunk(yourComment.id))
