@@ -8,3 +8,27 @@
     height: 30px;
     width: 200px;
 }
+.create-comment-modal {
+    padding: 40px;
+}
+
+.delete-comment-modal {
+    padding: 40px;
+}
+.delete-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.delete-comment {
+    background-color: red;
+    &:hover {
+        background-color: darkred;
+    }
+}
+.keep-comment {
+    background-color: blue;
+    &:hover {
+        background-color: darkblue;
+    }
+}

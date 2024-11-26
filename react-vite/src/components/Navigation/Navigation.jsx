@@ -4,7 +4,7 @@ import "./Navigation.css";
 
 function Navigation() {
   return (
-    <ul className="nav-bar" style={{backgroundColor: 'darkgoldenrod', margin: '0', padding: '20px, 0px'}}>
+    <ul className="nav-bar" style={{backgroundColor: 'rgb(84, 84, 235)', margin: '0', padding: '20px, 0px', borderRadius: '20px'}}>
       <li className="profile-button-nav">
         <ProfileButton />
         <NavLink
@@ -13,7 +13,7 @@ function Navigation() {
           textDecoration: 'none',
           fontSize: '2rem',
           fontWeight: '900',
-          color: 'black'
+          color: 'white'
         }}
         to="/">OnTrack</NavLink>
       </li>

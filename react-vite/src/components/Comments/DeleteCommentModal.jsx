@@ -13,14 +13,14 @@ const DeleteCommentModal = ({ yourComment }) => {
     }
 
     return (
-        <div>
-            <h1>Delete Comment?</h1>
+        <div className='delete-comment-modal'>
+            <h1 style={{ textAlign: 'center'}}>Delete Comment?</h1>
             <div>
                 <h2>Are you sure you want to delete your comment?</h2>
             </div>
-            <div>
-                <button onClick={deleteComment}>Yes (Delete Comment)</button>
-                <button onClick={closeModal}>No (Keep Comment)</button>
+            <div className='delete-options'>
+                <button className='delete-comment' onClick={deleteComment}>Yes (Delete Comment)</button>
+                <button className='keep-comment' onClick={closeModal}>No (Keep Comment)</button>
             </div>
         </div>
     )

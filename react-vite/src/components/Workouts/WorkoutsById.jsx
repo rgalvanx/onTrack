@@ -18,7 +18,7 @@ export default function WorkoutsById() {
     const correctUser = user?.id === workouts?.user_id
     const notOwner = user?.id !== workouts?.user_id
     const comments = useSelector((state) =>
-        Object.values(state.comments).find((comment) => (comment.workout_plan_id == Number(workoutId)) && (comment?.user_id === user.id)))
+        Object.values(state.comments).find((comment) => (comment.workout_plan_id == Number(workoutId)) && (comment?.user_id === user?.id)))
 
     useEffect(() => {
         dispatch(loadPlansThunk(workoutId))
@@ -48,7 +48,7 @@ export default function WorkoutsById() {
                     </div>
                 )}
                 {notOwner && !comments && user &&(
-                    <div>
+                    <div className="add-your-comment">
                         <OpenModalButton className="add-comment" itemText='Add Your Comment!'modalComponent={<CreateCommentModal navigate={navigate} workoutId={workoutId}/>}></OpenModalButton>
                     </div>
                 )}
