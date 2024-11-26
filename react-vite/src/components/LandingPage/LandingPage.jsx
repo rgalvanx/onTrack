@@ -8,6 +8,7 @@ export default function LandingPage() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const plans = useSelector((state) => Object.values(state.workouts))
+    const user = useSelector((state) => state.session.user)
 
     useEffect(() => {
         dispatch(loadPlansThunk())
@@ -17,14 +18,16 @@ export default function LandingPage() {
         <div
         className="landing-page"
         style={{marginTop: '50px'}}>
-            <button
-            className="create-button"
-            style={{marginLeft: '50px'}}
-            onClick={(e) => {
-                e.preventDefault()
-                navigate(`/workout_plans/create`)
-            }}>Create a Workout Plan!
+            {user && (
+                <button
+                className="create-button"
+                style={{marginLeft: '50px'}}
+                onClick={(e) => {
+                    e.preventDefault()
+                    navigate(`/workout_plans/create`)
+                }}>Create a Workout Plan!
             </button>
+            )}
             <ul
             className="workout-list">
             {plans.length > 0 ? (

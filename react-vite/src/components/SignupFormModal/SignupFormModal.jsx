@@ -39,9 +39,10 @@ function SignupFormModal() {
   };
 
   return (
-    <>
-      <h1>Sign Up</h1>
-      {errors.server && <p>{errors.server}</p>}
+    <div className="login-modal">
+      <div className="signup-modal">
+      <h1 style={{ textAlign: 'center', margin: '10px'}}>Sign Up</h1>
+      {errors.server && <p className="err-message">{errors.server}</p>}
       <form onSubmit={handleSubmit}>
         <label>
           Email
@@ -50,9 +51,9 @@ function SignupFormModal() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-          />
+            />
         </label>
-        {errors.email && <p>{errors.email}</p>}
+        {errors.email && <p className="err-message">{errors.email}</p>}
         <label>
           Username
           <input
@@ -60,9 +61,9 @@ function SignupFormModal() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
-          />
+            />
         </label>
-        {errors.username && <p>{errors.username}</p>}
+        {errors.username && <p className="err-message">{errors.username}</p>}
         <label>
           Password
           <input
@@ -70,9 +71,9 @@ function SignupFormModal() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-          />
+            />
         </label>
-        {errors.password && <p>{errors.password}</p>}
+        {errors.password && <p className="err-message">{errors.password}</p>}
         <label>
           Confirm Password
           <input
@@ -80,12 +81,13 @@ function SignupFormModal() {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
-          />
+            />
         </label>
-        {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+        {errors.confirmPassword && <p className="err-message">{errors.confirmPassword}</p>}
         <button type="submit">Sign Up</button>
       </form>
-    </>
+      </div>
+    </div>
   );
 }
 

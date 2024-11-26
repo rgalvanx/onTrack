@@ -18,6 +18,8 @@ const EditWorkout = () => {
 
         if(category.length < 3) errors.category = 'Category must be at least 3 characters'
         if(content.length < 10) errors.content = 'Content must be at least 10 characters'
+        if(category.length > 25) errors.category = 'Category cannot exceed 3 characters'
+        if(content.length > 500) errors.content = 'Content cannot exceed 500 characters'
 
         setErrors(errors)
     }, [category, content])

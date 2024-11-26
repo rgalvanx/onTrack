@@ -15,7 +15,6 @@
 .login-modal {
     display: flex;
     flex-direction: column;
-    height: 400px;
     width: 500px;
 }
 modal-content {
@@ -24,7 +23,7 @@ modal-content {
 .login-label {
     width: 80%;
     display: flex;
-    justify-content: space-around;
+    gap: 20px;
 }
 
 form {
@@ -49,4 +48,8 @@ input {
     border-radius: 5px;
     margin-bottom: 10px;
     box-sizing: border-box;
+}
+.err-message {
+    color: red;
+    padding: 0;
 }
