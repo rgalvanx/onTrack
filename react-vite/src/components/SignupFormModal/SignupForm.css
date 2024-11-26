@@ -1,0 +1,16 @@
+.signup-modal {
+    padding-bottom: 10px;
+}
+.create-workout {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-color: grey;
+    border-radius: 20px;
+    width: 50%;
+    justify-self: center;
+    margin-top: 40px;
+}
+#back-button {
+    margin-left: 20px;
+}

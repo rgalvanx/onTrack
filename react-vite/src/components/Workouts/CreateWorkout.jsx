@@ -15,6 +15,8 @@ const CreateWorkout = () => {
         const errors = {}
 
         if(category.length < 3) errors.category = 'Category must be at least 3 characters'
+        if(category.length > 25) errors.category = 'Category cannot exceed 3 characters'
+        if(content.length > 500) errors.content = 'Content cannot exceed 500 characters'
         if(content.length < 10) errors.content = 'Content must be at least 10 characters'
 
         setErrors(errors)
@@ -32,19 +34,34 @@ const CreateWorkout = () => {
     return (
         <div className="create-workout">
             <button id='back-button' style={{width: 'fit-content', marginTop: '10px'}} onClick={() => {navigate(-1) }}>{`< Back`}</button>
-                <h1> Add your own Workout Plan</h1>
-                <form onSubmit={handleSubmit} className="create-plan">
+                <h1 className="add-workout"> Add your own Workout Plan</h1>
+                <form
+                onSubmit={handleSubmit}
+                className="create-plan">
                     {submitted && errors.category && <p className="err-message">{errors.category}</p>}
                     <label className="category">
                         Category:
-                        <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} required />
+                        <input
+                        type="text"
+                        value={category}
+                        placeholder="ie: 'arms', 'legs', 'full-body'"
+                        onChange={(e) => setCategory(e.target.value)}
+                        required />
                     </label>
                     {submitted && errors.content && <p className="err-message">{errors.content}</p>}
                     <label className="content">
                         Content:
-                        <textarea className="content-text" type="text" value={content} onChange={(e) => setContent(e.target.value)} required />
+                        <textarea
+                        className="content-text"
+                        placeholder="ie:'db arm curls 25(1x 8) 30(2x8)'
+'preacher curl 45(2x8) 55(1x6)'"
+                        type="text" value={content}
+                        onChange={(e) => setContent(e.target.value)}
+                        required />
                     </label>
-                    <button type="submit">Create Plan!</button>
+                    <button
+                    className='create-plan-button'
+                    type="submit">Create Plan!</button>
                 </form>
         </div>
     )

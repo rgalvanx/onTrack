@@ -14,7 +14,7 @@ const EditCommentModal = ({ workoutId, yourComment }) => {
         const errors = {}
 
         if(content.length < 10) errors.content = 'Comment must be at least 10 characters'
-
+        if(content.length > 200) errors.content = 'Comment cannot exceed 100 characters'
         setErrors(errors)
     }, [content])
 

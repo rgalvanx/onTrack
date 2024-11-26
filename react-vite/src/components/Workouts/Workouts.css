@@ -38,6 +38,7 @@
     margin-bottom: 10px;
     display: block;
     border-radius: 3%;
+    height: 200px;
 }
 .delete-workout-modal {
     display: flex;
@@ -110,4 +111,12 @@ html {
 }
 .add-comment {
     margin: 20px;
+}
+.add-workout {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.create-plan-button {
+    margin-bottom: 30px;
 }

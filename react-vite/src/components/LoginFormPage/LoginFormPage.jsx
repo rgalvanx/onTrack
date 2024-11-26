@@ -23,7 +23,6 @@ function LoginFormPage() {
         password,
       })
     );
-
     if (serverResponse) {
       setErrors(serverResponse);
     } else {
@@ -46,7 +45,7 @@ function LoginFormPage() {
             required
           />
         </label>
-        {errors.email && <p>{errors.email}</p>}
+        {errors.email && <p className="err-message">{errors.email}</p>}
         <label>
           Password
           <input
@@ -56,8 +55,7 @@ function LoginFormPage() {
             required
           />
         </label>
-        {errors.password && <p>{errors.password}</p>}
-        <button type="submit">Log In</button>
+        {errors.password && <p className="err-message">{errors.password}</p>}
       </form>
     </>
   );
