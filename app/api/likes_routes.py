@@ -40,3 +40,13 @@ def unlike_workout(workout_plan_id):
     db.session.commit()
 
     return jsonify({'message': 'Successfully unliked'}), 200
+
+@likes_routes.route('/<int:workout_plan_id>/likes', methods=['GET'])
+def plan_likes(workout_plan_id):
+    plan = WorkoutPlan.query.get(workout_plan_id)
+    if not plan:
+        return jsonify({'error': 'Plan not found!'}), 404
+
+    likes = Like.query.filter_by(workout_plan_id=workout_plan_id).count()
+
+    return jsonify({ 'workout_plan_id': workout_plan_id, 'like_count': likes })
