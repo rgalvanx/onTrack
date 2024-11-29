@@ -3,6 +3,7 @@ from .users import seed_users, undo_users
 from .workout_plans import seed_workout_plans, undo_workout_plans
 from app.models.db import db, environment, SCHEMA
 from .comments import seed_comments, undo_comments
+from .likes import seed_likes, undo_likes
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -20,9 +21,11 @@ def seed():
         undo_users()
         undo_workout_plans()
         undo_comments()
+        undo_likes()
     seed_users()
     seed_workout_plans()
     seed_comments()
+    seed_likes()
     # Add other seed functions here
 
 
@@ -32,4 +35,5 @@ def undo():
     undo_users()
     undo_workout_plans()
     undo_comments()
+    undo_likes()
     # Add other undo functions here

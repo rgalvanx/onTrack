@@ -27,6 +27,7 @@ class WorkoutPlan(db.Model):
 
     user = db.relationship('User', back_populates='workout_plans')
     comments = db.relationship('Comment', back_populates='workout_plans', cascade='all, delete-orphan')
+    likes = db.relationship('Like', back_populates='workout_plans', cascade='all, delete-orphan')
 
     def to_dict(self):
         return {
