@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 const LOAD_LIKES = 'like/LOAD'
 const ADD_LIKE = 'like/ADD'
 const DELETE_LIKE = 'like/DELETE'
+const LOAD_ALL_LIKES = 'likes/LOAD_ALL'
 
 const loadLikes = ( likes ) => ({
     type: LOAD_LIKES,
@@ -18,12 +19,18 @@ const deleteLike = ( like ) => ({
     like
 })
 
+const loadAllLikes = ( likes ) => ({
+    type: LOAD_ALL_LIKES,
+    likes
+})
+
 export const loadLikesThunk = ( workout_plan_id ) => async ( dispatch ) => {
     const res = await csrfFetch(`/api/likes/${workout_plan_id}/likes`)
 
     if(res) {
         const likes = await res.json()
-        dispatch(loadLikes(likes))
+        dispatch(loadLikes(likes.Like))
+        return likes
     }
 }
 
@@ -47,13 +54,22 @@ export const deleteLikeThunk = ( workout_plan_id ) => async ( dispatch ) => {
     }
 }
 
+export const loadAllLikesThunk = () => async ( dispatch ) => {
+    const res = await csrfFetch('/api/likes/')
+
+    if(res) {
+        const getAllLikes = await res.json()
+        dispatch(loadAllLikes(getAllLikes))
+        return getAllLikes
+    }
+}
+
 export default function likeReducer(state = {}, action) {
     switch(action.type) {
         case LOAD_LIKES: {
-            const newState = {}
-            action.likes.forEach((like) => {
-                newState[like.id] = like
-            })
+            const newState = { ...state }
+            const { workout_plan_id, like_count } = action.likes
+            newState[workout_plan_id] = { like_count }
             return newState
         }
         case ADD_LIKE: {
@@ -64,7 +80,14 @@ export default function likeReducer(state = {}, action) {
         }
         case DELETE_LIKE: {
             const newState = { ...state }
-            delete newState[action.like]
+            delete newState[action.like.id]
+            return newState
+        }
+        case LOAD_ALL_LIKES: {
+            const newState = { ...state }
+            action.likes.forEach((like) => {
+                newState[like.workout_plan_id] = like
+            })
             return newState
         }
         default:

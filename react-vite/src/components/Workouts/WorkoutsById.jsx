@@ -7,7 +7,9 @@ import DeleteWorkout from "./DeleteWorkout";
 import './Workouts.css'
 import Comments from "../Comments/Comments";
 import { loadCommentsThunk } from "../../store/comments";
+import { loadLikesThunk } from "../../store/likes";
 import CreateCommentModal from "../Comments/CreateCommentModal";
+import { FaRegThumbsUp } from "react-icons/fa";
 
 export default function WorkoutsById() {
     const { workoutId } = useParams()
@@ -23,7 +25,15 @@ export default function WorkoutsById() {
     useEffect(() => {
         dispatch(loadPlansThunk(workoutId))
         dispatch(loadCommentsThunk(workoutId))
-    }, [dispatch])
+        dispatch(loadLikesThunk(workoutId))
+    }, [dispatch, workoutId])
+
+    const handleClick = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        window.alert('Feature coming soon...')
+    }
+
 
     if(!workouts) return (
         <h1>No Projects Found!</h1>
@@ -41,15 +51,25 @@ export default function WorkoutsById() {
                 </div>
             </div>
             <div className="comments-section">
+                {comments && (
+                    <h2 className="like_count_commented" style={{display: 'flex'}}><div className="like-button" onClick={handleClick}><FaRegThumbsUp />{workouts.like_count}</div></h2>
+                )}
+
                 {correctUser && (
+                    <div className="users-options">
                     <div className="user-options">
                         <OpenModalButton className="delete-button" itemText='Delete Workout' modalComponent={<DeleteWorkout workout={workouts}/>}>Delete Workout</OpenModalButton>
                         <button onClick={() => navigate(`/workout_plans/${workoutId}/edit`)}className="update-button">Update Your Plan</button>
+                    </div>
+                    <div>
+                        <h2 className="thumbs-up"><FaRegThumbsUp />{workouts.like_count}</h2>
+                    </div>
                     </div>
                 )}
                 {notOwner && !comments && user &&(
                     <div className="add-your-comment">
                         <OpenModalButton className="add-comment" itemText='Add Your Comment!'modalComponent={<CreateCommentModal navigate={navigate} workoutId={workoutId}/>}></OpenModalButton>
+                        <h2 className="like_count"><FaRegThumbsUp />{workouts.like_count}</h2>
                     </div>
                 )}
                 <Comments workoutId={workoutId}/>

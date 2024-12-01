@@ -76,10 +76,21 @@
 }
 .user-options {
     display: flex;
-    width: 25%;
-    justify-content: space-around;
+    width: 30%;
+    background-color: darkgrey;
+    justify-content: space-between;
     align-items: center;
     height: 70px;
+}
+.users-options {
+    background-color: darkgrey;
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+}
+.thumbs-up {
+    padding-right: 20px;
 }
 .comments-section {
     padding: 20px 20px;
@@ -106,8 +117,33 @@ html {
     background-color: rgb(178, 174, 174);
 }
 .add-your-comment {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     background-color: darkgray;
     border-radius: 20px;
+}
+.like_count {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    padding: 10px;
+    padding-right: 20px;
+}
+.like_count_commented {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    border-radius: 20px;
+    background-color: darkgray;
+    padding: 20px;
+}
+.like-button {
+    display: flex;
+    gap: 10px;
+}
+.like-button:hover{
+    cursor: pointer;
 }
 .add-comment {
     margin: 20px;

@@ -78,3 +78,9 @@
 .dropdown-item {
   padding: none;
 }
+.dropdown-item.your-likes:hover {
+  cursor: pointer;
+}
+.dropdown-item.your-plans:hover {
+  cursor: pointer;
+}

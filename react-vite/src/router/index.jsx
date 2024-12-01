@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
       {
         path: 'workout_plans/:workoutId/edit',
         element: <EditWorkout />
-      }
+      },
     ],
   },
 ]);
