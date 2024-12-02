@@ -38,5 +38,5 @@ class WorkoutPlan(db.Model):
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'username': self.user.username,
-            'like_count': len(self.likes)
+            'like_count': len(self.likes),
         }

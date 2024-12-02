@@ -4,7 +4,7 @@
   right: 0;
   background-color: white;
   cursor: default;
-  border: 1px solid whitesmoke;
+  border: 8px solid whitesmoke;
   box-shadow: 0 4px 6px rgb(0, 0, 0, 0.1);
   border-radius: 4px;
   width: 200px;
@@ -26,6 +26,8 @@
   position: relative;
   display: flex;
   justify-content: end;
+  width: 50px;
+  padding: 10px 40px;
 }
 .profile-button {
   background: none;
@@ -83,4 +85,8 @@
 }
 .dropdown-item.your-plans:hover {
   cursor: pointer;
+}
+.site-name {
+  display: flex;
+  justify-content: center;
 }

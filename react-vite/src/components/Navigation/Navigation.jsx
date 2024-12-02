@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
+import { LiaStopwatchSolid } from "react-icons/lia";
 import "./Navigation.css";
 
 function Navigation() {
@@ -15,7 +16,7 @@ function Navigation() {
           fontWeight: '900',
           color: 'white'
         }}
-        to="/">OnTrack</NavLink>
+        to="/"><LiaStopwatchSolid size={35}/>nTrack</NavLink>
       </li>
     </ul>
   );

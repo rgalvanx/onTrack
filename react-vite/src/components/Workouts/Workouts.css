@@ -23,7 +23,7 @@
     justify-self: center;
     width: 85%;
     height: fit-content;
-    border: 2px black solid;
+    border: 5px black solid;
     border-radius: 10px;
     line-height: 1.8em;
     width: fit-content;
@@ -90,7 +90,12 @@
     justify-content: space-between;
 }
 .thumbs-up {
+    display: flex;
     padding-right: 20px;
+    gap: 10px;
+    &:hover {
+        cursor: pointer;
+    }
 }
 .comments-section {
     padding: 20px 20px;
@@ -108,13 +113,17 @@
 .landing-page {
     background-color: rgb(145, 138, 138);
     padding: 20px;
-    border: 1px rgb(166, 159, 159) solid;
+    border: 5px rgb(166, 159, 159) solid;
     margin: 20px;
     border-radius: 20px;
 }
 html {
     z-index: 20;
     background-color: rgb(178, 174, 174);
+}
+.create-button {
+    height: fit-content;
+    border: 5px black solid;
 }
 .add-your-comment {
     display: flex;
@@ -129,6 +138,9 @@ html {
     gap: 10px;
     padding: 10px;
     padding-right: 20px;
+    &:hover{
+        cursor: pointer;
+    }
 }
 .like_count_commented {
     display: flex;

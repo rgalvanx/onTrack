@@ -29,7 +29,7 @@ export const loadLikesThunk = ( workout_plan_id ) => async ( dispatch ) => {
 
     if(res) {
         const likes = await res.json()
-        dispatch(loadLikes(likes.Like))
+        dispatch(loadLikes(likes))
         return likes
     }
 }
@@ -68,8 +68,9 @@ export default function likeReducer(state = {}, action) {
     switch(action.type) {
         case LOAD_LIKES: {
             const newState = { ...state }
-            const { workout_plan_id, like_count } = action.likes
-            newState[workout_plan_id] = { like_count }
+            action.likes.forEach((like) => {
+                newState[like.workout_plan_id] = like
+            })
             return newState
         }
         case ADD_LIKE: {
@@ -86,7 +87,7 @@ export default function likeReducer(state = {}, action) {
         case LOAD_ALL_LIKES: {
             const newState = { ...state }
             action.likes.forEach((like) => {
-                newState[like.workout_plan_id] = like
+                newState[like.id] = like
             })
             return newState
         }
