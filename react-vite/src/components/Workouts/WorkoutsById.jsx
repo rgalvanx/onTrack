@@ -53,6 +53,9 @@ export default function WorkoutsById() {
                 </div>
             </div>
             <div className="comments-section">
+                {!user && (
+                    <h2 className="like_count_commented" style={{display: 'flex'}}><div className="like-button" onClick={handleClick}><FaRegThumbsUp />{workouts.like_count}</div></h2>
+                )}
                 {comments && liked && (
                     <h2 className="like_count_commented" style={{display: 'flex'}}><div className="like-button" onClick={handleClick}><FaThumbsUp />{workouts.like_count}</div></h2>
                 )}
