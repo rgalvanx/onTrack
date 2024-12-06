@@ -49,6 +49,7 @@ export const deleteLikeThunk = ( workout_plan_id ) => async ( dispatch ) => {
         method: 'DELETE'
     })
     if(res) {
+        console.log('here')
         const removeLike = await res.json()
         dispatch(deleteLike(removeLike))
     }

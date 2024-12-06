@@ -84,8 +84,11 @@
 }
 .users-options {
     background-color: darkgrey;
+    border-radius: 20px;
+    padding: 0px 20px;
     display: flex;
     flex-direction: row;
+    align-items: center;
 
     justify-content: space-between;
 }

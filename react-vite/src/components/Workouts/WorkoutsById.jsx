@@ -7,10 +7,10 @@ import DeleteWorkout from "./DeleteWorkout";
 import './Workouts.css'
 import Comments from "../Comments/Comments";
 import { loadCommentsThunk } from "../../store/comments";
-import { loadAllLikesThunk } from "../../store/likes";
+import { loadAllLikesThunk, loadLikesThunk } from "../../store/likes";
 import CreateCommentModal from "../Comments/CreateCommentModal";
 import { FaRegThumbsUp } from "react-icons/fa";
-import { FaThumbsUp } from "react-icons/fa";
+import LikesButton from "../Likes/AddLike";
 
 export default function WorkoutsById() {
     const { workoutId } = useParams()
@@ -27,15 +27,9 @@ export default function WorkoutsById() {
     useEffect(() => {
         dispatch(loadPlansThunk(workoutId))
         dispatch(loadCommentsThunk(workoutId))
-        dispatch(loadAllLikesThunk())
-    }, [dispatch, workoutId])
-
-    const handleClick = (e) => {
-        e.preventDefault()
-        e.stopPropagation()
-        window.alert('Feature coming soon...')
-    }
-
+        dispatch(loadAllLikesThunk(workoutId))
+        dispatch(loadLikesThunk(workoutId))
+    }, [dispatch, workoutId, workouts?.likes])
 
     if(!workouts) return (
         <h1>No Projects Found!</h1>
@@ -54,10 +48,17 @@ export default function WorkoutsById() {
             </div>
             <div className="comments-section">
                 {!user && (
-                    <h2 className="like_count_commented" style={{display: 'flex'}}><div className="like-button" onClick={handleClick}><FaRegThumbsUp />{workouts.like_count}</div></h2>
+                    <h2 className="like_count_commented" style={{display: 'flex'}}><div className="like-button" ><FaRegThumbsUp />{workouts.like_count}</div></h2>
+                )}
+                {!liked && comments && (
+                    <h2 className="like_count_commented" style={{display: 'flex'}}>
+                        <LikesButton workoutId={workoutId} liked={liked}/>{workouts.like_count}
+                    </h2>
                 )}
                 {comments && liked && (
-                    <h2 className="like_count_commented" style={{display: 'flex'}}><div className="like-button" onClick={handleClick}><FaThumbsUp />{workouts.like_count}</div></h2>
+                    <h2 className="like_count_commented" style={{display: 'flex'}}>
+                        <LikesButton workoutId={workoutId} liked={liked}/>{workouts.like_count}
+                    </h2>
                 )}
 
                 {correctUser && (
@@ -66,15 +67,17 @@ export default function WorkoutsById() {
                         <OpenModalButton className="delete-button" itemText='Delete Workout' modalComponent={<DeleteWorkout workout={workouts}/>}>Delete Workout</OpenModalButton>
                         <button onClick={() => navigate(`/workout_plans/${workoutId}/edit`)}className="update-button">Update Your Plan</button>
                     </div>
-                    <div>
-                        <h2 className="thumbs-up" onClick={handleClick}><FaRegThumbsUp />{workouts.like_count}</h2>
-                    </div>
+                    <h2 className="like_count_commented" style={{display: 'flex', paddingTop: '0px', paddingBottom: '0px'}}>
+                        <LikesButton workoutId={workoutId} liked={liked}/>{workouts.like_count}
+                    </h2>
                     </div>
                 )}
                 {notOwner && !comments && user &&(
                     <div className="add-your-comment">
                         <OpenModalButton className="add-comment" itemText='Add Your Comment!'modalComponent={<CreateCommentModal navigate={navigate} workoutId={workoutId}/>}></OpenModalButton>
-                        <h2 className="like_count"><FaRegThumbsUp onClick={handleClick}/>{workouts.like_count}</h2>
+                        <h2 className="like_count_commented" style={{display: 'flex'}}>
+                            <LikesButton workoutId={workoutId} liked={liked}/>{workouts.like_count}
+                        </h2>
                     </div>
                 )}
                 <Comments workoutId={workoutId}/>

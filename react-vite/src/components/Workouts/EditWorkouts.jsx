@@ -42,7 +42,7 @@ const EditWorkout = () => {
 
     return (
         <div className="create-workout">
-            <button id='back-button' style={{width: 'fit-content', marginTop: '10px'}} onClick={() => {navigate(-1) }}>{`< Back`}</button>
+            <button id='back-button' style={{width: 'fit-content', marginTop: '10px'}} onClick={() => {navigate(-1) }}>{`Back`}</button>
                 <h1> Update you Workout Plan</h1>
                 <form onSubmit={handleSubmit} className="create-plan">
                     {submitted && errors.category && <p className="err-message">{errors.category}</p>}
