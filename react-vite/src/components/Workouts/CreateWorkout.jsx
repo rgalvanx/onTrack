@@ -33,7 +33,7 @@ const CreateWorkout = () => {
 
     return (
         <div className="create-workout">
-            <button id='back-button' style={{width: 'fit-content', marginTop: '10px'}} onClick={() => {navigate(-1) }}>{`< Back`}</button>
+            <button id='back-button' style={{width: 'fit-content', marginTop: '10px'}} onClick={() => {navigate(-1) }}>{`Back`}</button>
                 <h1 className="add-workout"> Add your own Workout Plan</h1>
                 <form
                 onSubmit={handleSubmit}
