@@ -10,23 +10,23 @@ def all_likes():
 
     return jsonify([like.to_dict() for like in likes]), 200
 
-@likes_routes.route('/<int:workout_plan_id>/like', methods=['POST'])
-@login_required
-def like_workout(workout_plan_id):
-    workout_plan = WorkoutPlan.query.get(workout_plan_id)
-    if workout_plan.user_id == current_user.id:
-        return jsonify({'error': 'Cannot like your own plan'}), 400
+# @likes_routes.route('/<int:workout_plan_id>/like', methods=['POST'])
+# @login_required
+# def like_workout(workout_plan_id):
+#     workout_plan = WorkoutPlan.query.get(workout_plan_id)
+#     if workout_plan.user_id == current_user.id:
+#         return jsonify({'error': 'Cannot like your own plan'}), 400
 
-    already_liked = Like.query.filter_by( user_id=current_user.id, workout_plan_id=workout_plan_id).first()
+#     already_liked = Like.query.filter_by( user_id=current_user.id, workout_plan_id=workout_plan_id).first()
 
-    if already_liked:
-        return jsonify({'error': 'You have already liked this post'}), 400
+#     # if already_liked:
+#     #     return jsonify({'error': 'You have already liked this post'}), 400
 
-    new_like = Like(user_id=current_user.id, workout_plan_id=workout_plan_id)
-    db.session.add(new_like)
-    db.session.commit()
+#     new_like = Like(user_id=current_user.id, workout_plan_id=workout_plan_id)
+#     db.session.add(new_like)
+#     db.session.commit()
 
-    return jsonify(new_like.to_dict()), 201
+#     return jsonify(new_like.to_dict()), 201
 
 @likes_routes.route('/<int:workout_plan_id>/like', methods=['DELETE'])
 @login_required
@@ -50,3 +50,25 @@ def plan_likes(workout_plan_id):
     likes = Like.query.filter_by(workout_plan_id=workout_plan_id).count()
 
     return jsonify({ 'workout_plan_id': workout_plan_id, 'like_count': likes })
+
+@likes_routes.route('/<int:workout_plan_id>/like', methods=['POST'])
+@login_required
+def toggle(workout_plan_id):
+    plan = WorkoutPlan.query.get(workout_plan_id)
+    if not plan:
+        return jsonify({'error': 'Workout plan not found'}), 404
+
+    if plan.user_id == current_user.id:
+        return jsonify({'error': 'Cannot like your own plan'}), 400
+
+    already_liked = Like.query.filter_by(user_id=current_user.id, workout_plan_id=workout_plan_id).first()
+
+    if already_liked:
+        db.session.delete(already_liked)
+        db.session.commit()
+        return jsonify({'message': 'Successfully deleted like', 'liked': 'false'}), 200
+    else:
+        new_like = Like(user_id=current_user.id, workout_plan_id=workout_plan_id)
+        db.session.add(new_like)
+        db.session.commit()
+        return jsonify({'message': 'Successfully added like'}), 200
