@@ -10,7 +10,7 @@ export default function LandingPage() {
     const navigate = useNavigate()
     const plans = useSelector((state) => Object.values(state.workouts))
     const user = useSelector((state) => state.session.user)
-    
+
     useEffect(() => {
         dispatch(loadPlansThunk())
         dispatch(loadAllLikesThunk())
@@ -41,7 +41,7 @@ export default function LandingPage() {
                             e.preventDefault()
                             navigate(`/workout_plans/${workout.id}`)
                         }}>
-                            <h1 className="workout category">{workout.category}</h1>
+                            <h1 className="workout-category">{workout.category}</h1>
                             <h2 className="workout username">by {workout.username}</h2>
                             <h2 >{workout.like_count} likes</h2>
                         </div>
