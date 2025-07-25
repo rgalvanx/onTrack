@@ -10,6 +10,17 @@ def all_likes():
 
     return jsonify([like.to_dict() for like in likes]), 200
 
+@likes_routes.route('/user/<int:user_id>', methods=['GET'])
+@login_required
+def user_liked_workouts(user_id):
+    if current_user.id != user_id:
+        return jsonify({'error': 'Unauthorized access'}), 403
+
+    likes = Like.query.filter_by(user_id=user_id).all()
+    liked_workouts = [like.workout_plans.to_dict() for like in likes]
+
+    return jsonify({'liked_workouts': liked_workouts}), 200
+
 @likes_routes.route('/<int:workout_plan_id>/like', methods=['POST'])
 @login_required
 def like_workout(workout_plan_id):
