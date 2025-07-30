@@ -11,7 +11,7 @@ def all_likes():
     return jsonify([like.to_dict() for like in likes]), 200
 
 @likes_routes.route('/user/<int:user_id>', methods=['GET'])
-# @login_required
+@login_required
 def user_liked_workouts(user_id):
     if current_user.id != user_id:
         return jsonify({'error': 'Unauthorized access'}), 403
