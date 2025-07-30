@@ -66,7 +66,7 @@ function ProfileButton() {
               onClick={handleClick}
               >Your Plans</li>
               <li className="dropdown-item your-likes"
-              onClick={handleClick}
+              onClick={() => handleClick('/your-likes')}
               // onClick={(e) => {
               //   e.preventDefault()
               //   navigate(`/${user.username}/plans`)

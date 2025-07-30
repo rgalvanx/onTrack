@@ -4,6 +4,7 @@ import SignupFormPage from '../components/SignupFormPage';
 import Layout from './Layout';
 import LandingPage from '../components/LandingPage';
 import { CreateWorkout, EditWorkout, WorkoutsById } from '../components/Workouts';
+import UserLikes from '../components/UsersLikes/UserLikes';
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
         path: 'workout_plans/:workoutId/edit',
         element: <EditWorkout />
       },
+      {
+        path: 'your-likes',
+        element: <UserLikes />
+      }
     ],
   },
 ]);
